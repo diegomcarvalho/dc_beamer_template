@@ -1,0 +1,385 @@
+% main.tex - showcase of the DC beamer theme
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage{polyglossia}
+\setdefaultlanguage{portuguese} % Replace with your desired language
+\setotherlanguages{english, french, spanish} % Add any additional languages you need
+\usepackage{fontspec}
+\usetheme[showlogo]{DC}
+
+
+% -- Metadata -----------------------------------
+\title[DC Beamer Theme]{%
+  Beamer Theme for DC%
+  \texorpdfstring{{\footnotesize \quad \textcolor{DCred}{v1.1.0}}}{ v1.1.0}%
+}
+\author[D.Carvalho]{Prof. Diego Carvalho, D.Sc.}
+\subtitle{Um template \LaTeX\ para apresentações no Cefet/RJ, baseado no UU Beamer Theme}
+\institute{DIGES - DIREN/DEPES/CCEPRO - DIPPG/PPPRO - DIPPG/PPCIC}
+\date{\today}
+
+\begin{document}
+% ===========================================
+%  TITLE SLIDES  (single-author, then multi-author)
+% ===========================================
+
+% -- Single-author title --
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% -- Multi-author / conference title (no subtitle - demonstrates that
+%    leaving it out is fine) --
+\subtitle{}
+\author[Alice et al.]{%
+  Alice\inst{1} \and
+  Bob\inst{1} \and
+  Eve\inst{2}%
+}
+\addinstitute{1}{Dept.\ of Information and Computing Sciences, Utrecht University}
+\addinstitute{2}{Faculty of EEMCS, Delft University of Technology}
+\multiauthor
+\venue{NeurIPS 2026}
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% -- Reset to single-author for the rest of the demo --
+\subtitle{Um template \LaTeX\ para apresentações no Cefet/RJ}
+\author[D.Carvalho]{Prof. Diego Carvalho, D.Sc.}
+\institute{Cefet/RJ}
+\clearinstitutes
+\singleauthor
+
+% ===========================================
+%  TABLE OF CONTENTS
+% ===========================================
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% ===========================================
+\section{Iniciando os trabalhos}
+% ===========================================
+
+\begin{frame}{Usando o tema}
+  Coloque no preâmbulo e defina o seu metadado:
+
+  \begin{itemize}
+    \item \texttt{\textbackslash usetheme\{DC\}} --- usagem básica
+    \item \texttt{\textbackslash usetheme[showlogo]\{DC\}} --- coloca o logo do Cefet/RJ nos slides
+    \item \texttt{\textbackslash usetheme[nl]\{DC\}} --- Dutch logo variant
+  \end{itemize}
+
+  \vskip 6pt
+  Para diversos autores, utilize o padrão:
+  \texttt{\textbackslash author} / \texttt{\textbackslash institute}
+  with \texttt{\textbackslash and} and \texttt{\textbackslash inst\{n\}},
+  then activate with:
+  \begin{itemize}
+    \item \texttt{\textbackslash multiauthor}
+    \item \texttt{\textbackslash venue\{NeurIPS 2026, Utrecht\}} (opcional)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Opções do tema}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Flags} \footnotesize
+        Passe opções para \texttt{\textbackslash usetheme[...]}\texttt{\{DC\}}:
+        \texttt{nl}, \texttt{showlogo}, \texttt{nosectionpage}.
+      \end{block}
+      \vskip 6pt
+      \begin{block}{Slides especiais} \footnotesize
+        \texttt{\textbackslash standoutframe\{...\}} para ênfase.\\
+        \texttt{\textbackslash thankframe\{...\}\{...\}} para fechamentos.\\
+        \texttt{\textbackslash sectionframe\{...\}} divisor manual. \\
+        \texttt{\textbackslash closingframe \{...\}} slide com o logo do Cefet para fechamentos.
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth} \footnotesize
+      \begin{block}{Conference Title}
+        \texttt{\textbackslash multiauthor} ativa o layout para múltiplos autores.
+        Use \texttt{\textbackslash addinstitute\{n\}\{Name\}} para listar as afiliações
+        (numbered automatically). Call \texttt{\textbackslash clearinstitutes} para resetar.
+      \end{block}
+    \end{column}
+  \end{columns}
+
+  \vskip 10pt
+  A flag \texttt{showlogo}, ativada nesse exemplo, coloca o logo do Cefet no canto superior direito dos slides.
+\end{frame}
+
+% Manual section divider demo (same style as automatic \AtBeginSection pages)
+\sectionframe{Esse é uma ativação de \textbackslash sectionframe}
+
+% ===========================================
+\sectionimage{img/palette.jpg}
+\section{Colour Palette}
+% ===========================================
+
+\begin{frame}{DC Brand Colours}
+  \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Cores principais}
+        \textcolor{DCyellow}{\rule{1em}{1em}}~Yellow \texttt{\#FFCD00}\\[3pt]
+        \textcolor{DCred}{\rule{1em}{1em}}~Red \texttt{\#C00A35}\\[3pt]
+        {\rule{1em}{1em}}~Black \texttt{\#000000}\\[3pt]
+        \textcolor{white}{\rule{1em}{1em}}~White \texttt{\#FFFFFF}
+      \end{alertblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+    \begin{exampleblock}{Secondary Colours}
+        \begin{tabular}{@{}l@{\hspace{0.25em}} l@{\hspace{2em}} l@{\hspace{0.25em}} l@{}}
+        \textcolor{DCcream}{\rule{1em}{1em}}   & Cream      &
+        \textcolor{DCorange}{\rule{1em}{1em}}  & Orange \\[3pt]
+
+        \textcolor{DCburgundy}{\rule{1em}{1em}} & Burgundy   &
+        \textcolor{DCbrown}{\rule{1em}{1em}}    & Brown \\[3pt]
+
+        \textcolor{DCgreen}{\rule{1em}{1em}}   & Green      &
+        \textcolor{DCblue}{\rule{1em}{1em}}    & Blue \\[3pt]
+
+        \textcolor{DCdarkblue}{\rule{1em}{1em}} & Dark blue  &
+        \textcolor{DCpurple}{\rule{1em}{1em}}   & Purple
+        \end{tabular}
+    \end{exampleblock}
+    \end{column}
+  \end{columns}
+
+  \vskip 8pt
+  Azul do Cefet é uma cor primária. \alert{Vermelho} é usado para chamar atenção.
+  As cores secundárias são para os gráficos.
+\end{frame}
+
+% ===========================================
+\section{Tipografia \& Blocos}
+% ===========================================
+
+\begin{frame}{Tipografia}
+  \begin{enumerate}
+    \item \textbf{Merriweather} (serif) para títulos e aberturas
+    \item \textsf{Open Sans} (sans-serif) para texto do corpo
+    \item Fallback: Palatino + se o pacote de fontes não funcionar
+  \end{enumerate}
+
+  \vskip 10pt
+  \begin{exampleblock}{Tip}
+    Instale \texttt{texlive-fonts-extra} para um visual autêntico.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Lists}
+  Itemize utiliza quadrados marcadores em azul-cefet em até três níveis:
+
+  \begin{itemize}
+    \item First-level items use \textcolor{DCblue}{yellow} squares
+    \begin{itemize}
+      \item Second-level items use \textcolor{DCorange}{orange}
+      \begin{itemize}
+        \item Third-level items use \textcolor{DCbrown}{brown}
+      \end{itemize}
+    \end{itemize}
+    \item Items can contain \textbf{bold}, \emph{italic}, or \alert{alerted} text
+    \item Keep bullets concise
+  \end{itemize}
+
+  \vskip 8pt
+  Enumerate uses numbered yellow squares:
+  \begin{enumerate}
+    \item First item
+    \item Second item
+    \item Third item
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Mathematics}
+  The theme supports mathematical typesetting \cite{tai1994mathematical}:
+
+$$
+\int_{a}^{b} f(x)\,dx \approx
+\frac{h}{2}\left[f(x_0) + 2\sum_{i=1}^{n-1} f(x_i) + f(x_n)\right]
+$$
+
+  \begin{alertblock}{Note}
+    This is a note block, intended to grab the reader's attention.
+  \end{alertblock}
+\end{frame}
+
+% ===========================================
+\section{Diagrams \& Code}
+% ===========================================
+
+\begin{frame}{Workflow Diagram}
+  \begin{figure}
+  \centering
+  \begin{tikzpicture}[
+    node distance=0.6cm and 1.0cm,
+    box/.style={
+      rectangle, rounded corners=3pt,
+      minimum height=2em, minimum width=4.5em,
+      text centered, font=\sffamily\footnotesize,
+      draw=none
+    },
+    arr/.style={->, >=stealth, semithick, DCdarkgray},
+    scale=0.95, transform shape
+  ]
+    \node[box, fill=DCyellow, text=DCblack] (data) {Data};
+    \node[box, fill=DCorange!80, text=white, right=of data] (preprocess) {Pre-process};
+    \node[box, fill=DCgreen!90, text=white, right=of preprocess] (model) {Model};
+    \node[box, fill=DCblue!90, text=white, right=of model] (evaluate) {Evaluate};
+    \node[box, fill=DCburgundy!90, text=white, right=of evaluate] (deploy) {Deploy};
+
+    \draw[arr] (data) -- (preprocess);
+    \draw[arr] (preprocess) -- (model);
+    \draw[arr] (model) -- (evaluate);
+    \draw[arr] (evaluate) -- (deploy);
+
+    \draw[arr, DCred, dashed]
+      (evaluate.south) -- ++(0,-0.7) -| node[below, pos=0.25, font=\tiny\sffamily, DCred] {iterate} (model.south);
+  \end{tikzpicture}
+  \caption{Example process diagram with a numbered figure caption.}
+  \end{figure}
+
+  \vskip 6pt
+  TikZ diagrams integrate naturally with the DC colour palette.
+  Use \texttt{DCyellow}, \texttt{DCgreen}, \texttt{DCblue}, etc.\ directly.
+\end{frame}
+
+\begin{frame}[fragile]{Code Listing}
+The \texttt{listings} package is pre-configured with DC colours.
+  Specify the language and write code verbatim:
+
+  \begin{lstlisting}[language=Python]
+def fibonacci(n):
+    """Return the n-th Fibonacci number."""
+    if n <= 1:
+        return n
+    a, b = 0, 1
+    for _ in range(2, n + 1):
+        a, b = b, a + b  # shift window
+    return b
+
+print(fibonacci(10))  # 55
+  \end{lstlisting}
+\end{frame}
+
+% ===========================================
+\section{Tables \& Figures}
+% ===========================================
+
+\begin{frame}{Tables}
+  \begin{table}
+    \centering
+    \caption{Theme files overview}
+    \begin{tabular}{ll}
+      \hline
+      \textbf{File} & \textbf{Purpose} \\
+      \hline
+      \texttt{beamerthemeDC.sty}      & Main theme, options, fonts \\
+      \texttt{beamercolorthemeDC.sty}  & Official DC brand colours \\
+      \texttt{beamerinnerthemeDC.sty}  & Title page, blocks, special frames \\
+      \texttt{beamerouterthemeDC.sty}  & Frame title, footline, logo \\
+      \hline
+    \end{tabular}
+  \end{table}
+\end{frame}
+
+\begin{frame}{Figure in a Column Layout}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      Pair figures with text using \texttt{columns}:
+      \begin{itemize}
+        \item Left column carries the narrative
+        \item Right column holds the figure
+        \item Caption is numbered automatically
+      \end{itemize}
+
+      \vskip 8pt
+      Use \texttt{[T]} on \texttt{columns} to top-align both sides,
+      and \texttt{\textbackslash centering} inside the figure.
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      \begin{figure}
+        \centering
+        \begin{tikzpicture}[scale=0.82]
+         % bars
+          \foreach \x/\h/\col in {
+            0.4/1.2/DCblue,
+            1.1/2.4/DCblue,
+            1.8/1.8/DCblue,
+            2.5/2.9/DCyellow,
+            3.2/2.1/DCyellow,
+            3.9/3.0/DCyellow}{
+            \fill[\col!80] (\x,0) rectangle (\x+0.55,\h);
+          }
+          % axes
+          \draw[DCdarkgray, thin] (0,0) -- (4.5,0) node[right,font=\tiny\sffamily]{$x$};
+          \draw[DCdarkgray, thin] (0,0) -- (0,3.2) node[above,font=\tiny\sffamily]{$y$};
+          % legend
+          \fill[DCblue!80]  (0.3,3.05) rectangle (0.65,3.25);
+          \node[right,font=\tiny\sffamily] at (0.7,3.15) {Group A};
+          \fill[DCyellow!80] (2.0,3.05) rectangle (2.35,3.25);
+          \node[right,font=\tiny\sffamily] at (2.4,3.15) {Group B};
+        \end{tikzpicture}
+        \caption{Sample bar chart with DC colours.}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% -- Standout --------------------------
+\standoutframe{  {\rmfamily\mdseries\LARGE\color{DCwhite} Sharing science,}\vspace*{-0.2cm}\\{\opensans\fontseries{l}\LARGE\itshape\color{DCwhite} shaping tomorrow}} % official spacing is a bit different though
+
+% full image
+
+
+\begin{frame}[plain]
+\fullbleedimage{img/maracana2.jpg}
+\end{frame}
+
+
+% ===========================================
+\section{Closing}
+% ===========================================
+
+\begin{frame}{Summary}
+  \begin{enumerate}
+    \item Blue-driven design, just as the DC likes it
+    \item Merriweather + Open Sans, 10pt body text by default
+    \item Special frames: \texttt{\textbackslash standoutframe}, \texttt{\textbackslash thankframe}, \texttt{\textbackslash closingframe}, \texttt{\textbackslash sectionframe},
+    \item Options: \texttt{nl}, \texttt{showlogo}, \texttt{nosectionpage}
+    \item Multi-author slides: \texttt{\textbackslash addinstitute\{n\}\{Name\}} + \texttt{\textbackslash multiauthor}
+    \item Syntax-highlighted code via \texttt{lstlisting} with DC colours
+  \end{enumerate}
+
+  \vskip 12pt
+  {\small Source and documentation: \url{https://github.com/joszuijderwijk/beamer-uu}}
+\end{frame}
+
+% -- Closing options demo --------------------------------------------
+% (1) Compact thank-you with title + contact line
+\thankframe{Feedback?}{Please contribute \\ \url{https://github.com/joszuijderwijk/beamer-uu}}
+
+% (2) Brand closing slide — just the DC logo and tagline
+\closingframe
+
+% (3) Brand closing slide with partner-logo area
+%     Replace the \rule boxes below with \includegraphics for real logos.
+\closingframe[%
+  \color{DCwhite!30}%
+  \rule{2.6cm}{1.2cm}\hspace{0.8cm}%
+  \rule{2.6cm}{1.2cm}\hspace{0.8cm}%
+  \rule{2.6cm}{1.2cm}%
+]
+
+% -- references -----------------------------
+\begin{frame}[allowframebreaks]{References}
+  The Beamer class~\cite{tantau2004} provides the foundation.
+  DC brand guidelines~\cite{uubrand2025} define the colour palette,
+  typography, and logo usage rules.
+
+  \vskip 6pt
+  \printbibliography
+\end{frame}
+
+\end{document}
